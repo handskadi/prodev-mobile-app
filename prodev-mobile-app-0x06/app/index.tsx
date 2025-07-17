@@ -55,15 +55,19 @@ export default function Index() {
                   </TouchableOpacity>
                 </Link>
               </View>
-              <View style={styles.continueArrowGroup}>
-                <Text style={styles.continueArrowColor}>Continue to home</Text>
-                <Pressable>
-                  <Ionicons
-                    name="arrow-forward"
-                    size={20}
-                    style={styles.continueArrowColor}
-                  />
-                </Pressable>
+              <View>
+                <Link href="/(home)" asChild>
+                  <Pressable style={styles.continueArrowGroup}>
+                    <Text style={styles.continueArrowColor}>
+                      Continue to home
+                    </Text>
+                    <Ionicons
+                      name="arrow-forward"
+                      size={20}
+                      style={styles.continueArrowColor}
+                    />
+                  </Pressable>
+                </Link>
               </View>
             </View>
           </View>
