@@ -1,113 +1,65 @@
-import {
-  Text,
-  TextInput,
-  View,
-  TouchableOpacity,
-  Image,
-  ScrollView,
-} from 'react-native';
-import { styles } from '@/styles/_signinstyle';
-import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
-import { FontAwesome, Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
-import { FACEBOOKLOGO, GOOGLELOGO, HEROLOGOGREEN } from '@/constants';
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { styles } from "@/styles/_joinstyle";
 
 export default function Join() {
-  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
-        <ScrollView
-          contentContainerStyle={{ flexGrow: 1 }}
-          showsVerticalScrollIndicator={false}
-        >
-          <View style={styles.navGroup}>
-            <TouchableOpacity onPress={() => router.push('/')}>
-              <Ionicons name="arrow-back" size={25} />
-            </TouchableOpacity>
-            <Image source={HEROLOGOGREEN} />
-          </View>
-          <Text style={styles.largeText}>Create Your</Text>
-          <Text style={styles.largeText}>Account</Text>
-          <Text style={styles.smallText}>
-            Enter your details to create a new account.
-          </Text>
+    <View style={styles.container}>
+      {/* Title Section */}
+      <View style={styles.titleTextGroup}>
+        <Text style={styles.titleText}>Join Now</Text>
+        <Text style={styles.subText}>Create a new account</Text>
+      </View>
 
-          <View style={styles.formGroup}>
-            <View>
-              <Text style={styles.placeholderText}>Email</Text>
-              <TextInput
-                keyboardType="email-address"
-                style={styles.inputField}
-              />
-            </View>
-            <View style={{ marginTop: 20 }}>
-              <Text style={styles.placeholderText}>Password</Text>
-              <View style={styles.passwordGroup}>
-                <TextInput style={{ flex: 1 }} />
-                <FontAwesome name="eye-slash" size={24} color="#7E7B7B" />
-              </View>
-            </View>
-            <View style={{ marginTop: 20 }}>
-              <Text style={styles.placeholderText}>Password</Text>
-              <View style={styles.passwordGroup}>
-                <TextInput style={{ flex: 1 }} />
-                <FontAwesome name="eye-slash" size={24} color="#7E7B7B" />
-              </View>
-            </View>
-          </View>
+      {/* Form Section */}
+      <View style={styles.formGroup}>
+        <Text style={styles.formLabel}>Email</Text>
+        <TextInput
+          style={styles.formControl}
+          placeholder="Enter your email"
+          value={email}
+          onChangeText={setEmail}
+        />
 
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Create</Text>
-          </TouchableOpacity>
+        <Text style={styles.formLabel}>Password</Text>
+        <View style={styles.formPasswordControl}>
+          <TextInput
+            style={styles.passwordControl}
+            placeholder="Enter your password"
+            secureTextEntry
+            value={password}
+            onChangeText={setPassword}
+          />
+        </View>
 
-          <View style={styles.dividerGroup}>
-            <View style={styles.divider}></View>
-            <Text style={styles.dividerText}>OR</Text>
-            <View style={styles.divider}></View>
-          </View>
+        <Text style={styles.formLabel}>Confirm Password</Text>
+        <View style={styles.formPasswordControl}>
+          <TextInput
+            style={styles.passwordControl}
+            placeholder="Confirm your password"
+            secureTextEntry
+            value={confirmPassword}
+            onChangeText={setConfirmPassword}
+          />
+        </View>
+      </View>
 
-          <View style={styles.socialMediaButtonGroup}>
-            <TouchableOpacity style={styles.socialMediaButton}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  gap: 5,
-                }}
-              >
-                <Image source={GOOGLELOGO} />
-                <Text style={styles.socialMediaButtonText}>
-                  Continue with Google
-                </Text>
-              </View>
-            </TouchableOpacity>
+      {/* Primary Button */}
+      <TouchableOpacity style={styles.primaryButton}>
+        <Text style={styles.buttonText}>Sign Up</Text>
+      </TouchableOpacity>
 
-            <TouchableOpacity style={styles.socialMediaButton}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  gap: 5,
-                }}
-              >
-                <Image source={FACEBOOKLOGO} />
-                <Text style={styles.socialMediaButtonText}>
-                  Continue with Facebook
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.subTextGroup}>
-            <Text style={styles.subText}>Already have an account?</Text>
-            <TouchableOpacity onPress={() => router.push('/signin')}>
-              <Text style={styles.subTextJoin}>Sign in</Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </SafeAreaProvider>
+      {/* Signup Link */}
+      <View style={styles.signupgroup}>
+        <Text style={styles.signupTitleText}>Already have an account?</Text>
+        <TouchableOpacity>
+          <Text style={styles.signupSubTitleText}>Sign In</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 }

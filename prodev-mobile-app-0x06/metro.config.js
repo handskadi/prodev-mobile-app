@@ -1,6 +1,9 @@
-const { getDefaultConfig } = require('expo/metro-config');
-const { withNativeWind } = require('nativewind/metro');
+const { getDefaultConfig } = require("expo/metro-config");
 
-const config = getDefaultConfig(__dirname);
+module.exports = (() => {
+    const config = getDefaultConfig(__dirname);
+    config.transformer.babelTransformerPath = require.resolve("react-native-css-transformer");
+    config.resolver.assetExts.push("css");
 
-module.exports = withNativeWind(config, { input: './styles/global.css' });
+    return config;
+})();

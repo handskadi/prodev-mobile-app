@@ -32,41 +32,39 @@ const styles = StyleSheet.create({
   rateText: {
     fontSize: 20,
     color: "#fff",
-    fontWeight: 500,
+    fontWeight: "500",
     marginLeft: 4,
   },
   priceGroup: {
     backgroundColor: "#F9F9F9",
-    width: 90,
-    height: 30,
+    width: 104,
+    height: 45,
     borderRadius: 30,
     alignItems: "center",
     justifyContent: "center",
   },
   priceText: {
-    fontSize: 12,
-    fontWeight: 500,
+    fontSize: 17,
+    fontWeight: "500",
   },
-  cardGroup: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    rowGap: 30,
-    width: "100%",
+  cardTextGroup: {
+    width: 205,
   },
-  cardTextGroup: {},
   cardLargeText: {
-    fontSize: 20,
-    fontWeight: 600,
+    fontSize: 30,
+    fontWeight: "600",
     color: "#fff",
   },
   cardSmallText: {
-    fontSize: 12,
-    fontWeight: 400,
+    fontSize: 15,
+    fontWeight: "400",
     color: "#fff",
   },
-
+  cardGroup: {
+    flexDirection: "row",
+    columnGap: 40,
+    alignItems: "center",
+  },
   group: {
     position: "absolute",
     bottom: 30,

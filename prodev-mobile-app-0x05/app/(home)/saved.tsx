@@ -1,9 +1,9 @@
-import { View, Text } from 'react-native';
+import { View, Text } from "react-native";
 
 const Saved = () => {
   return (
     <View>
-      <Text>Saved</Text>
+      <Text>Saved Screen</Text>
     </View>
   );
 };

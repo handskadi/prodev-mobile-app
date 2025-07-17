@@ -1,107 +1,66 @@
-import {
-  Text,
-  TextInput,
-  View,
-  TouchableOpacity,
-  Image,
-  ScrollView,
-} from 'react-native';
-import { styles } from '@/styles/_signinstyle';
-import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
-import { FontAwesome, Ionicons } from '@expo/vector-icons';
-import { FACEBOOKLOGO, GOOGLELOGO, HEROLOGOGREEN } from '@/constants';
-import { useRouter } from 'expo-router';
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
+import { styles } from "@/styles/_mainstyle";
+import { HEROLOGO } from "@/constants";
 
-export default function SignIn() {
-  const router = useRouter();
+export default function Signin() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
-    <SafeAreaProvider>
-      <SafeAreaView style={styles.container}>
-        <ScrollView
-          contentContainerStyle={{ flexGrow: 1 }}
-          showsVerticalScrollIndicator={false}
-        >
-          <View style={styles.navGroup}>
-            <TouchableOpacity onPress={() => router.push('/')}>
-              <Ionicons name="arrow-back" size={25} />
-            </TouchableOpacity>
-            <Image source={HEROLOGOGREEN} />
-          </View>
-          <Text style={styles.largeText}>Sign in to your</Text>
-          <Text style={styles.largeText}>Account</Text>
-          <Text style={styles.smallText}>
-            Enter your email and password to sign in.
+    <View style={styles.container}>
+      {/* Logo Section */}
+      <View style={styles.logoContainer}>
+        <Image
+          source={HEROLOGO}
+          style={{ width: 120, height: 120, resizeMode: "contain" }}
+        />
+      </View>
+
+      {/* Title Section */}
+      <View style={styles.titleContainer}>
+        <Text style={styles.titleText}>Welcome Back</Text>
+        <View style={styles.titleSubTextContainer}>
+          <Text style={styles.titleSubText}>
+            Please sign in to continue
           </Text>
+        </View>
+      </View>
 
-          <View style={styles.formGroup}>
-            <View>
-              <Text style={styles.placeholderText}>Email</Text>
-              <TextInput
-                keyboardType="email-address"
-                style={styles.inputField}
-              />
-            </View>
-            <View style={{ marginTop: 20 }}>
-              <Text style={styles.placeholderText}>Password</Text>
-              <View style={styles.passwordGroup}>
-                <TextInput style={{ flex: 1 }} />
-                <FontAwesome name="eye-slash" size={24} color="#7E7B7B" />
-              </View>
-            </View>
-            <Text style={styles.forgotPasswordText}>Forgot password?</Text>
-          </View>
+      {/* Form Section */}
+      <View style={{ paddingHorizontal: 20, marginTop: 20 }}>
+        <TextInput
+          placeholder="Email"
+          value={email}
+          onChangeText={setEmail}
+          style={{
+            borderWidth: 1,
+            borderColor: "#ccc",
+            borderRadius: 8,
+            padding: 10,
+            marginBottom: 15,
+          }}
+        />
+        <TextInput
+          placeholder="Password"
+          secureTextEntry
+          value={password}
+          onChangeText={setPassword}
+          style={{
+            borderWidth: 1,
+            borderColor: "#ccc",
+            borderRadius: 8,
+            padding: 10,
+          }}
+        />
+      </View>
 
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Sign in</Text>
-          </TouchableOpacity>
-
-          <View style={styles.dividerGroup}>
-            <View style={styles.divider}></View>
-            <Text style={styles.dividerText}>OR</Text>
-            <View style={styles.divider}></View>
-          </View>
-
-          <View style={styles.socialMediaButtonGroup}>
-            <TouchableOpacity style={styles.socialMediaButton}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  gap: 5,
-                }}
-              >
-                <Image source={GOOGLELOGO} />
-                <Text style={styles.socialMediaButtonText}>
-                  Continue with Google
-                </Text>
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.socialMediaButton}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  gap: 5,
-                }}
-              >
-                <Image source={FACEBOOKLOGO} />
-                <Text style={styles.socialMediaButtonText}>
-                  Continue with Facebook
-                </Text>
-              </View>
-            </TouchableOpacity>
-          </View>
-
-          <View style={styles.subTextGroup}>
-            <Text style={styles.subText}>Don't have an account?</Text>
-            <TouchableOpacity onPress={() => router.push('/join')}>
-              <Text style={styles.subTextJoin}>Join now</Text>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </SafeAreaProvider>
+      {/* Button Section */}
+      <View style={{ marginHorizontal: 20, marginTop: 30 }}>
+        <TouchableOpacity style={styles.buttonPrimary}>
+          <Text style={styles.buttonPrimaryText}>Sign In</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 }

@@ -1,8 +1,9 @@
-import { View, Text } from 'react-native';
+import { View, Text } from "react-native";
+
 const Inbox = () => {
   return (
     <View>
-      <Text>Inbox</Text>
+      <Text>Inbox Screen</Text>
     </View>
   );
 };

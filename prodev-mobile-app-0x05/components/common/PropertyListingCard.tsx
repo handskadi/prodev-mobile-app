@@ -1,10 +1,9 @@
-import { View, Text, StyleSheet, ImageBackground } from 'react-native';
-import EvilIcons from '@expo/vector-icons/EvilIcons';
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { styles } from '@/styles/_propertyCardStyle';
-import { SAMPLEIMAGE } from '@/constants';
-import { PropertyListingProps } from '@/interfaces';
+import { View, Text, ImageBackground } from "react-native";
+import EvilIcons from "@expo/vector-icons/EvilIcons";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { PropertyListingProps } from "@/interfaces";
+import { styles } from "@/styles/propertyCardStyle";
 
 const PropertyListingCard: React.FC<PropertyListingProps> = ({
   propertyName,
@@ -16,7 +15,7 @@ const PropertyListingCard: React.FC<PropertyListingProps> = ({
 }) => {
   return (
     <ImageBackground
-      source={SAMPLEIMAGE}
+      source={require("@/assets/images/sample-image.png")}
       style={styles.container}
     >
       <View style={styles.overlay}>

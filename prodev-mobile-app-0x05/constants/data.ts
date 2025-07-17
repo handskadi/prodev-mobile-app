@@ -1,153 +1,146 @@
-import { PropertyListingProps } from '@/interfaces';
-import { ImageSourcePropType } from 'react-native';
-import {
-  AMAZINGICON,
-  BEACHFRONTICON,
-  COUNTRYSIDEICON,
-  FAMILYFRIENDLYICON,
-  LUXURYICON,
-  MANSIONICON,
-  NEWICON,
-  PETFRIENDLYICON,
-  SECLUDEDICON,
-  TROPICALICON,
-  VILLAICON,
-} from '.';
+import { PropertyListingProps } from "@/interfaces";
 
 const SAMPLE_DATA: PropertyListingProps[] = [
   {
-    propertyName: 'Villa Arrciffee Beach House',
+    propertyName: "Villa Arrciffee Beach House",
     location: {
-      street: '123 Ocean Drive',
-      city: 'Miami',
-      country: 'USA',
+      street: "123 Ocean Drive",
+      city: "Miami",
+      country: "USA",
     },
     rate: 4.76,
-    currency: '$',
+    currency: "$",
     amount: 620,
     favorite: false,
   },
   {
-    propertyName: 'Sunset Paradise Villa',
+    propertyName: "Sunset Paradise Villa",
     location: {
-      street: '456 Beachfront Lane',
-      city: 'Cancun',
-      country: 'Mexico',
+      street: "456 Beachfront Lane",
+      city: "Cancun",
+      country: "Mexico",
     },
     rate: 4.85,
-    currency: '$',
+    currency: "$",
     amount: 750,
     favorite: true,
   },
   {
-    propertyName: 'Golden Sands Retreat',
+    propertyName: "Golden Sands Retreat",
     location: {
-      street: '789 Coastal Road',
-      city: 'Gold Coast',
-      country: 'Australia',
+      street: "789 Coastal Road",
+      city: "Gold Coast",
+      country: "Australia",
     },
     rate: 4.92,
-    currency: '$',
+    currency: "$",
     amount: 900,
     favorite: false,
   },
   {
-    propertyName: 'Azure Horizon Cottage',
+    propertyName: "Azure Horizon Cottage",
     location: {
-      street: '321 Seaside Avenue',
-      city: 'Nice',
-      country: 'France',
+      street: "321 Seaside Avenue",
+      city: "Nice",
+      country: "France",
     },
     rate: 4.78,
-    currency: '$',
+    currency: "$",
     amount: 680,
     favorite: false,
   },
   {
-    propertyName: 'Palm Haven Villa',
+    propertyName: "Palm Haven Villa",
     location: {
-      street: '654 Palm Street',
-      city: 'Bali',
-      country: 'Indonesia',
+      street: "654 Palm Street",
+      city: "Bali",
+      country: "Indonesia",
     },
     rate: 4.88,
-    currency: '$',
+    currency: "$",
     amount: 1200,
     favorite: true,
   },
   {
-    propertyName: 'Ocean Breeze Mansion',
+    propertyName: "Ocean Breeze Mansion",
     location: {
-      street: '987 Marina Drive',
-      city: 'Dubai',
-      country: 'UAE',
+      street: "987 Marina Drive",
+      city: "Dubai",
+      country: "UAE",
     },
     rate: 4.95,
-    currency: '$',
+    currency: "$",
     amount: 2500,
     favorite: false,
   },
   {
-    propertyName: 'Seaside Serenity House',
+    propertyName: "Seaside Serenity House",
     location: {
-      street: '147 Ocean View Road',
-      city: 'Phuket',
-      country: 'Thailand',
+      street: "147 Ocean View Road",
+      city: "Phuket",
+      country: "Thailand",
     },
     rate: 4.81,
-    currency: '$',
+    currency: "$",
     amount: 1500,
     favorite: false,
   },
   {
-    propertyName: 'Coral Reef Villa',
+    propertyName: "Coral Reef Villa",
     location: {
-      street: '258 Coral Lane',
-      city: 'Maldives',
-      country: 'Maldives',
+      street: "258 Coral Lane",
+      city: "Maldives",
+      country: "Maldives",
     },
     rate: 4.89,
-    currency: '$',
+    currency: "$",
     amount: 850,
     favorite: false,
   },
   {
-    propertyName: 'Tropical Bliss Retreat',
+    propertyName: "Tropical Bliss Retreat",
     location: {
-      street: '369 Palm Beach Road',
-      city: 'Maui',
-      country: 'USA',
+      street: "369 Palm Beach Road",
+      city: "Maui",
+      country: "USA",
     },
     rate: 4.83,
-    currency: '$',
+    currency: "$",
     amount: 720,
     favorite: false,
   },
   {
-    propertyName: 'Emerald Bay Cottage',
+    propertyName: "Emerald Bay Cottage",
     location: {
-      street: '741 Bayfront Avenue',
-      city: 'Santorini',
-      country: 'Greece',
+      street: "741 Bayfront Avenue",
+      city: "Santorini",
+      country: "Greece",
     },
-    rate: 4.9,
-    currency: '$',
+    rate: 4.90,
+    currency: "$",
     amount: 780,
     favorite: true,
   },
 ];
 
-const FILTERS: { title: string; icon: ImageSourcePropType }[] = [
-  { title: 'Mansion', icon: MANSIONICON },
-  { title: 'CountrySide', icon: COUNTRYSIDEICON },
-  { title: 'Villa', icon: VILLAICON },
-  { title: 'Tropical', icon: TROPICALICON },
-  { title: 'New', icon: NEWICON },
-  { title: 'Amazing', icon: AMAZINGICON },
-  { title: 'Beachfront', icon: BEACHFRONTICON },
-  { title: 'Luxury', icon: LUXURYICON },
-  { title: 'Family-Friendly', icon: FAMILYFRIENDLYICON },
-  { title: 'Pet-Friendly', icon: PETFRIENDLYICON },
-  { title: 'Secluded', icon: SECLUDEDICON },
+export interface FilterType {
+  id: string;
+  name: string;
+  icon?: string;
+}
+
+const FILTERS: FilterType[] = [
+  { 
+    id: '1', 
+    name: 'Mansion',
+    icon: require('../assets/images/mansion.png')
+  },
+  { 
+    id: '2', 
+    name: 'CountrySide',
+    icon: require('../assets/images/countryside.png')
+  },
+  // ...rest of the filters
 ];
+
 export { SAMPLE_DATA, FILTERS };

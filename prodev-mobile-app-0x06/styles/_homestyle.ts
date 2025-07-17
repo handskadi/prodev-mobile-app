@@ -1,88 +1,74 @@
-import { StyleSheet } from 'react-native';
-
+import { StyleSheet, Platform, StatusBar } from "react-native";
 
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#F5F5F5',
-  },
-  searchGroup: {
-    backgroundColor: '#2B876E',
-    paddingTop: 48,
-    paddingBottom: 16,
-    paddingHorizontal: 16,
-  },
-  searchFormGroup: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    backgroundColor: 'white',
-    borderRadius: 50,
-    paddingHorizontal: 8,
-    paddingLeft: 24,
-    paddingVertical: 8,
-  },
-  searchControlGroup: {
-    flex: 1,
-  },
-  searchFormText: {
-    fontSize: 12,
-    color: '#000',
-    marginBottom: -4,
-    marginLeft: 4,
-  },
-  searchInputText: {
-    fontSize: 12,
-    color: '#333',
-  },
-  searchControl: {
-    paddingVertical: 6,
-  },
-  searchButton: {
-    backgroundColor: '#FFA800',
-    borderRadius: 50,
-    width: 40,
-    height: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginLeft: 10,
-  },
-  filterGroup: {
-    backgroundColor: 'white',
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 8,
-    paddingVertical: 8,
-  },
-  filterContainer: {
-    flexDirection: 'column',
-    alignItems: 'center',
-    marginRight: 16,
-    width: 70,
-  },
-  filterText:{
-    fontSize: 10,
-    color: '#333',
-    textAlign: 'center',
-  },
-  listingContainer: {
-    flex: 1,
-    marginTop: 16,
-    paddingHorizontal: 8,
-  },
-  paginationContainer: {
-    alignItems: 'center',
-    marginVertical: 20,
-  },
-  showMoreButton: {
-    backgroundColor: '#000',
-    paddingVertical: 16,
-    paddingHorizontal: 32,
-    borderRadius: 50,
-  },
-  showMoreButtonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: '600',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: "#fff",
+        padding: 16,
+    },
+    headerContainer: {
+        backgroundColor: "#0C8057",
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+        paddingBottom: 16,
+        paddingHorizontal: 16,
+    },
+    searchGroup: {
+        marginBottom: 16,
+    },
+    searchFormGroup: {
+        flexDirection: "row",
+        alignItems: "center",
+        backgroundColor: "#F0F0F0",
+        borderRadius: 8,
+        padding: 10,
+    },
+    searchControlGroup: {
+        flex: 1,
+    },
+    searchFormText: {
+        fontSize: 16,
+        fontWeight: "500",
+        color: "#333",
+    },
+    searchControl: {
+        marginTop: 4,
+        borderBottomWidth: 1,
+        borderColor: "#ddd",
+        paddingBottom: 4,
+    },
+    searchButton: {
+        backgroundColor: "orange",
+        padding: 10,
+        borderRadius: 20,
+        alignItems: "center",
+        justifyContent: "center",
+        marginLeft: 8,
+    },
+    filterGroup: {
+        flexDirection: "row",
+        alignItems: "center",
+        paddingVertical: 8,
+    },
+    filterContainer: {
+        alignItems: "center",
+        marginHorizontal: 10,
+    },
+    listingContainer: {
+        flex: 1,
+    },
+    paginationContainer: {
+        alignItems: "center",
+        marginVertical: 16,
+    },
+    showMoreButton: {
+        backgroundColor: "black",
+        paddingVertical: 10,
+        paddingHorizontal: 25,
+        borderRadius: 20,
+    },
+    showMoreButtonText: {
+        color: "#fff",
+        fontSize: 14,
+        fontWeight: "600",
+    },
 });
