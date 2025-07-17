@@ -1,6 +1,6 @@
-import PropertyListing from "@/components/PropertyListing";
-import { styles } from "@/styles/_homestyle";
-import { Feather } from "@expo/vector-icons";
+import PropertyListing from '@/components/PropertyListing';
+import { styles } from '@/styles/_homestyle';
+import { AntDesign } from '@expo/vector-icons';
 import {
   View,
   Text,
@@ -8,25 +8,23 @@ import {
   Image,
   ScrollView,
   TouchableHighlight,
-} from "react-native";
-import { FILTERS, SAMPLE_DATA, TypesOfAcommodation } from "@/constants/data";
+} from 'react-native';
+import { FILTERS, SAMPLE_DATA } from '@/constants/data';
 
 const Home = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.searchContainer}>
-        <View style={styles.searchGroup}>
-          <View style={styles.searchFormGroup}>
-            <View style={styles.searchControlGroup}>
-              <Text style={styles.searchFormText}>Where to?</Text>
-              <TextInput
-                style={{ ...styles.searchControl, ...styles.searchFormText }}
-                placeholder="Location . Date . Add guest"
-              />
-            </View>
-            <View style={styles.searchButton}>
-              <Feather name="search" size={24} color="white" />
-            </View>
+      <View style={styles.searchGroup}>
+        <View style={styles.searchFormGroup}>
+          <View style={styles.searchControlGroup}>
+            <Text style={styles.searchFormText}>Where to?</Text>
+            <TextInput
+              style={{ ...styles.searchControl, ...styles.searchInputText }}
+              placeholder="Location . Date . Add guest"
+            />
+          </View>
+          <View style={styles.searchButton}>
+            <AntDesign name="search1" size={24} color="white" />
           </View>
         </View>
       </View>
@@ -34,22 +32,21 @@ const Home = () => {
       <View
         style={{
           height: 72,
-          backgroundColor: "white",
-          width: "100%",
+          backgroundColor: 'white',
         }}
       >
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <View style={styles.filterGroup}>
-            {FILTERS.map((filter: string, index: number) => (
+            {FILTERS.map((filter, index) => (
               <View style={styles.filterContainer} key={index}>
                 <Image
                   style={{
                     flex: 1,
                   }}
-                  source={TypesOfAcommodation[filter]}
+                  source={filter.icon}
                   resizeMode="contain"
                 />
-                <Text>{filter}</Text>
+                <Text style={styles.filterText}>{filter.title}</Text>
               </View>
             ))}
           </View>

@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
@@ -6,9 +6,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   iconsection: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     marginTop: 22,
   },
   titleTextGroup: {
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   subText: {
     fontWeight: 400,
     fontSize: 12,
-    color: "#7E7B7B",
+    color: '#7E7B7B',
   },
   formGroup: {
     marginTop: 44,
@@ -30,38 +30,38 @@ const styles = StyleSheet.create({
   formLabel: {
     fontSize: 18,
     fontWeight: 400,
-    color: "#7B7B7B",
+    color: '#7B7B7B',
     marginBottom: 7,
   },
   formControl: {
     borderWidth: 2,
     height: 50,
     borderRadius: 10,
-    borderColor: "#E9E9E9",
+    borderColor: '#E9E9E9',
     paddingHorizontal: 10,
   },
   formPasswordControl: {
     borderWidth: 2,
     height: 50,
     borderRadius: 10,
-    borderColor: "#E9E9E9",
+    borderColor: '#E9E9E9',
     paddingHorizontal: 10,
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   passwordControl: {
     flex: 1,
   },
   primaryButton: {
-    backgroundColor: "#34967C",
+    backgroundColor: '#34967C',
     height: 53,
     borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: 25,
   },
   buttonText: {
-    color: "white",
+    color: 'white',
     fontSize: 17,
     fontWeight: 300,
   },
@@ -72,9 +72,9 @@ const styles = StyleSheet.create({
   secondaryButton: {
     height: 53,
     borderRadius: 10,
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
     columnGap: 10,
     borderWidth: 1,
   },
@@ -83,9 +83,9 @@ const styles = StyleSheet.create({
     fontWeight: 400,
   },
   signupgroup: {
-    flexDirection: "row",
-    justifyContent: "center",
-    position: "absolute",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    position: 'absolute',
     left: 77,
     right: 76,
     bottom: 33,
@@ -97,11 +97,11 @@ const styles = StyleSheet.create({
   signupSubTitleText: {
     fontSize: 18,
     fontWeight: 600,
-    color: "#FFA800",
+    color: '#FFA800',
   },
   dividerGroup: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     columnGap: 10,
     marginBottom: 25,
     marginTop: 29,
@@ -109,17 +109,17 @@ const styles = StyleSheet.create({
   divider: {
     borderWidth: 1,
     flex: 1,
-    borderColor: "#e6e6e6",
+    borderColor: '#e6e6e6',
   },
   dividerText: {
     fontSize: 17,
     fontWeight: 500,
-    fontVariant: ["small-caps"],
-    color: "#C2C2C2",
+    fontVariant: ['small-caps'],
+    color: '#C2C2C2',
   },
   forgotPasswordText: {
-    textAlign: "right",
-    color: "#34967C",
+    textAlign: 'right',
+    color: '#34967C',
     marginTop: 9,
   },
 });

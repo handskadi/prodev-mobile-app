@@ -1,8 +1,8 @@
-import { StyleSheet, Dimensions } from "react-native";
+import { StyleSheet, Dimensions } from 'react-native';
 
 // Constants for reusable values
 const COLORS = {
-  white: "#fff",
+  white: '#fff',
 };
 
 const SPACING = {
@@ -21,7 +21,7 @@ const BORDER_RADIUS = {
   large: 36,
 };
 
-const { height } = Dimensions.get("window");
+const { height } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
@@ -29,12 +29,11 @@ const styles = StyleSheet.create({
   },
   backgroundImageContainer: {
     flex: 1,
-    width: "100%",
     height: height,
   },
   logoContainer: {
     padding: SPACING.large,
-    alignItems: "center",
+    alignItems: 'center',
     marginTop: 74,
   },
   titleContainer: {
@@ -42,7 +41,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: FONT_SIZE.large,
-    textAlign: "center",
+    textAlign: 'center',
     fontWeight: 800,
     color: COLORS.white,
   },
@@ -52,12 +51,12 @@ const styles = StyleSheet.create({
   titleSubText: {
     fontWeight: 300,
     fontSize: FONT_SIZE.small,
-    textAlign: "center",
+    textAlign: 'center',
     color: COLORS.white,
   },
   buttonPrimary: {
     backgroundColor: COLORS.white,
-    alignItems: "center",
+    alignItems: 'center',
     padding: SPACING.medium,
     borderRadius: BORDER_RADIUS.large,
     flex: 1,
@@ -65,10 +64,10 @@ const styles = StyleSheet.create({
   buttonPrimaryText: {
     fontSize: FONT_SIZE.small,
     fontWeight: 300,
-    textAlign: "center",
+    textAlign: 'center',
   },
   buttonSecondary: {
-    alignItems: "center",
+    alignItems: 'center',
     padding: SPACING.medium,
     borderRadius: BORDER_RADIUS.large,
     borderWidth: 1,
@@ -78,33 +77,22 @@ const styles = StyleSheet.create({
   buttonSecondaryText: {
     fontSize: FONT_SIZE.small,
     fontWeight: 300,
-    textAlign: "center",
+    textAlign: 'center',
     color: COLORS.white,
   },
   buttonGroup: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
     gap: SPACING.medium,
     paddingHorizontal: SPACING.medium,
   },
   buttonGroupSubText: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     gap: SPACING.small,
     marginTop: 19,
-  },
-  continueArrowGroup: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 2,
-    paddingVertical: 20,
-  },
-  continueArrowColor: {
-    color: COLORS.white,
   },
 });
 
