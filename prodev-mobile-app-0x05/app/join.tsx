@@ -1,65 +1,71 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
-import { styles } from "@/styles/_joinstyle";
+import { Text, TextInput, View, TouchableOpacity, Image } from "react-native";
+import { styles } from "@/styles/joinstyle";
+import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
+import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Join() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
-      {/* Title Section */}
-      <View style={styles.titleTextGroup}>
-        <Text style={styles.titleText}>Join Now</Text>
-        <Text style={styles.subText}>Create a new account</Text>
-      </View>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.iconsection}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Ionicons name="arrow-back" size={25} color="black" />
+          </TouchableOpacity>
+          <Image source={require('@/assets/images/logo-green.png')} />
+        </View>
+        <Text style={styles.titleText}>Create an account</Text>
+        <Text style={styles.subText}>
+          Register your account with us.
+        </Text>
 
-      {/* Form Section */}
-      <View style={styles.formGroup}>
-        <Text style={styles.formLabel}>Email</Text>
-        <TextInput
-          style={styles.formControl}
-          placeholder="Enter your email"
-          value={email}
-          onChangeText={setEmail}
-        />
-
-        <Text style={styles.formLabel}>Password</Text>
-        <View style={styles.formPasswordControl}>
-          <TextInput
-            style={styles.passwordControl}
-            placeholder="Enter your password"
-            secureTextEntry
-            value={password}
-            onChangeText={setPassword}
-          />
+        <View style={styles.formGroup}>
+          <Text style={styles.formLabel}>Email</Text>
+          <TextInput keyboardType="email-address" style={styles.formControl} />
+          <Text style={styles.formLabel}>Password</Text>
+          <View style={styles.formPasswordControl}>
+            <TextInput style={styles.passwordControl} />
+            <Ionicons name="eye-off" size={24} color="#7E7B7B" />
+          </View>
+          <Text style={styles.forgotPasswordText}>Forgot password?</Text>
         </View>
 
-        <Text style={styles.formLabel}>Confirm Password</Text>
-        <View style={styles.formPasswordControl}>
-          <TextInput
-            style={styles.passwordControl}
-            placeholder="Confirm your password"
-            secureTextEntry
-            value={confirmPassword}
-            onChangeText={setConfirmPassword}
-          />
-        </View>
-      </View>
-
-      {/* Primary Button */}
-      <TouchableOpacity style={styles.primaryButton}>
-        <Text style={styles.buttonText}>Sign Up</Text>
-      </TouchableOpacity>
-
-      {/* Signup Link */}
-      <View style={styles.signupgroup}>
-        <Text style={styles.signupTitleText}>Already have an account?</Text>
-        <TouchableOpacity>
-          <Text style={styles.signupSubTitleText}>Sign In</Text>
+        <TouchableOpacity style={styles.primaryButton} onPress={() => navigation.navigate("Sign" as never)}>
+          <Text style={styles.buttonText}>join now</Text>
         </TouchableOpacity>
-      </View>
-    </View>
+
+        <View style={styles.dividerGroup}>
+          <View style={styles.divider} />
+          <Text style={styles.dividerText}>OR</Text>
+          <View style={styles.divider} />
+        </View>
+
+        <View style={styles.secondaryButtonGroup}>
+          <TouchableOpacity style={styles.secondaryButton}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <Image source={require("@/assets/images/google.png")} />
+              <Text style={styles.secondaryButtonText}>Continue with Google</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.secondaryButton}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <Image source={require("@/assets/images/facebook.png")} />
+              <Text style={styles.secondaryButtonText}>Continue with Facebook</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.signupgroup}>
+          <Text style={styles.signupTitleText}>Already have an account?</Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Sign" as never)}>
+            <Text style={styles.signupSubTitleText}>Sign In</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }

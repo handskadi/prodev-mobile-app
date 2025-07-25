@@ -1,20 +1,26 @@
-import React from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  ImageBackground,
-  Dimensions,
-  TouchableOpacity
-} from "react-native";
+import { Text, View, StyleSheet, Image, ImageBackground, Dimensions, TouchableOpacity } from "react-native";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
-import { useRouter } from "expo-router";
+import { useNavigation } from '@react-navigation/native';
 
-export default function Index() {
-  const router = useRouter();
+type RootStackParamList = {
+  [x: string]: any;
+  index: undefined;
+  join: undefined;
+  sign: undefined;
+};
 
-  return (
+const App = ()=>{
+  const navigation = useNavigation<RootStackParamList>();
+
+  const handleJoinPress = () => {
+    navigation.navigate('join');
+  };
+
+  const handleSignPress = () => {
+    navigation.navigate('Sign');
+  };
+
+  return(
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1 }}>
         <ImageBackground
@@ -23,37 +29,31 @@ export default function Index() {
           resizeMode="cover"
         >
           <View style={styles.container}>
-            {/* Company Logo */}
             <View style={styles.companyLogo}>
               <Image source={require("@/assets/images/Logo.png")} />
             </View>
 
-            {/* Text Group */}
             <View style={styles.textGroup}>
               <Text style={styles.textLarge}>Find your favorite place here</Text>
               <Text style={styles.textSmall}>The best prices for over 2 </Text>
               <Text style={styles.textSmall}>million properties worldwide</Text>
             </View>
 
-            {/* Button Group & Navigation Prompt */}
             <View style={{ position: "absolute", bottom: 0, width: "100%" }}>
               <View style={styles.buttonGroup}>
-                <TouchableOpacity
-                  style={styles.button}
-                  onPress={() => router.push("/join")}
-                >
+                <TouchableOpacity style={styles.button} onPress={handleJoinPress}>
                   <Text style={{ ...styles.textSmall, color: "black" }}>Join here</Text>
                 </TouchableOpacity>
-                <TouchableOpacity
-                  style={styles.transparentButton}
-                  onPress={() => router.push("/signin")}
-                >
+
+                <TouchableOpacity style={styles.transparentButton} onPress={handleSignPress}>
                   <Text style={styles.textSmall}>Sign In</Text>
                 </TouchableOpacity>
               </View>
+              <TouchableOpacity onPress={() => navigation.navigate("(home)")}>
               <View style={{ alignItems: "center", paddingVertical: 20 }}>
                 <Text style={{ color: "white" }}>Continue to home</Text>
               </View>
+              </TouchableOpacity>
             </View>
           </View>
         </ImageBackground>
@@ -61,6 +61,7 @@ export default function Index() {
     </SafeAreaProvider>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -121,3 +122,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
 });
+
+export default App;

@@ -1,13 +1,20 @@
-import { View, Text, TextInput, Image, ScrollView, Dimensions, TouchableHighlight } from "react-native";
-import { Feather } from "@expo/vector-icons";
 import PropertyListing from "@/components/PropertyListing";
-import { styles } from "@/styles/_mainstyle";
+import { styles } from "@/styles/_homestyle";
+import { Feather } from "@expo/vector-icons";
+import {
+  View,
+  Text,
+  TextInput,
+  Image,
+  ScrollView,
+  Dimensions,
+  TouchableHighlight,
+} from "react-native";
 import { FILTERS, SAMPLE_DATA } from "@/constants/data";
 
 const Home = () => {
   return (
     <View style={styles.container}>
-      {/* Search Group */}
       <View style={styles.searchGroup}>
         <View style={styles.searchFormGroup}>
           <View style={styles.searchControlGroup}>
@@ -23,21 +30,30 @@ const Home = () => {
         </View>
       </View>
 
-      {/* Filter Section */}
-      <View style={{ height: 72, backgroundColor: "white" }}>
+      <View
+        style={{
+          height: 72,
+          backgroundColor: "white",
+        }}
+      >
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           <View style={styles.filterGroup}>
             {FILTERS.map((filter, index) => (
               <View style={styles.filterContainer} key={index}>
-                <Feather name="home" size={24} color="black" />
-                <Text>{filter.name}</Text>
+                <Image
+                  style={{
+                    flex: 1,
+                  }}
+                  source={require("@/assets/images/mansion.png")}
+                  resizeMode="contain"
+                />
+                <Text>{filter}</Text>
               </View>
             ))}
           </View>
-        </ScrollView>Text>
+        </ScrollView>
       </View>
 
-      {/* Property Listings */}
       <ScrollView style={styles.listingContainer}>
         <PropertyListing listings={SAMPLE_DATA} />
         <View style={styles.paginationContainer}>

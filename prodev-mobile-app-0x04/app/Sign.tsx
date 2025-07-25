@@ -1,66 +1,71 @@
-import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
-import { styles } from "@/styles/_mainstyle";
-import { HEROLOGO } from "@/constants";
+import { Text, TextInput, View, TouchableOpacity, Image } from "react-native";
+import { styles } from "@/styles/joinstyle";
+import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+import { Ionicons } from "@expo/vector-icons";
+import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
-export default function Signin() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export default function Join() {
+  const navigation = useNavigation();
 
   return (
-    <View style={styles.container}>
-      {/* Logo Section */}
-      <View style={styles.logoContainer}>
-        <Image
-          source={HEROLOGO}
-          style={{ width: 120, height: 120, resizeMode: "contain" }}
-        />
-      </View>
-
-      {/* Title Section */}
-      <View style={styles.titleContainer}>
-        <Text style={styles.titleText}>Welcome Back</Text>
-        <View style={styles.titleSubTextContainer}>
-          <Text style={styles.titleSubText}>
-            Please sign in to continue
-          </Text>
+    <SafeAreaProvider>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.iconsection}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Ionicons name="arrow-back" size={25} color="black" />
+          </TouchableOpacity>
+          <Image source={require('@/assets/images/logo-green.png')} />
         </View>
-      </View>
+        <Text style={styles.titleText}>Sign in to your Account</Text>
+        <Text style={styles.subText}>
+          Enter your email and password to sign in.
+        </Text>
 
-      {/* Form Section */}
-      <View style={{ paddingHorizontal: 20, marginTop: 20 }}>
-        <TextInput
-          placeholder="Email"
-          value={email}
-          onChangeText={setEmail}
-          style={{
-            borderWidth: 1,
-            borderColor: "#ccc",
-            borderRadius: 8,
-            padding: 10,
-            marginBottom: 15,
-          }}
-        />
-        <TextInput
-          placeholder="Password"
-          secureTextEntry
-          value={password}
-          onChangeText={setPassword}
-          style={{
-            borderWidth: 1,
-            borderColor: "#ccc",
-            borderRadius: 8,
-            padding: 10,
-          }}
-        />
-      </View>
+        <View style={styles.formGroup}>
+          <Text style={styles.formLabel}>Email</Text>
+          <TextInput keyboardType="email-address" style={styles.formControl} />
+          <Text style={styles.formLabel}>Password</Text>
+          <View style={styles.formPasswordControl}>
+            <TextInput style={styles.passwordControl} />
+            <Ionicons name="eye-off" size={24} color="#7E7B7B" />
+          </View>
+          <Text style={styles.forgotPasswordText}>Forgot password?</Text>
+        </View>
 
-      {/* Button Section */}
-      <View style={{ marginHorizontal: 20, marginTop: 30 }}>
-        <TouchableOpacity style={styles.buttonPrimary}>
-          <Text style={styles.buttonPrimaryText}>Sign In</Text>
+        <TouchableOpacity style={styles.primaryButton} onPress={() => navigation.navigate("Sign" as never)}>
+          <Text style={styles.buttonText}>Sign in</Text>
         </TouchableOpacity>
-      </View>
-    </View>
+
+        <View style={styles.dividerGroup}>
+          <View style={styles.divider} />
+          <Text style={styles.dividerText}>OR</Text>
+          <View style={styles.divider} />
+        </View>
+
+        <View style={styles.secondaryButtonGroup}>
+          <TouchableOpacity style={styles.secondaryButton}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <Image source={require("@/assets/images/google.png")} />
+              <Text style={styles.secondaryButtonText}>Continue with Google</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.secondaryButton}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <Image source={require("@/assets/images/facebook.png")} />
+              <Text style={styles.secondaryButtonText}>Continue with Facebook</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.signupgroup}>
+          <Text style={styles.signupTitleText}>Don't have an account?</Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Sign" as never)}>
+            <Text style={styles.signupSubTitleText}>Join now</Text>
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
+    </SafeAreaProvider>
   );
 }

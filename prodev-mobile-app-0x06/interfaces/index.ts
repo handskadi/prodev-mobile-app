@@ -15,5 +15,5 @@ export interface PropertyLocationProps {
 }
 
 export interface PropertListing {
-    listings: PropertyListingProps[]
+    listings: PropertyListingProps []
 }

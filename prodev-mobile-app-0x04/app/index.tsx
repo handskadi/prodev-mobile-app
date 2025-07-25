@@ -1,5 +1,66 @@
 import { Text, View, StyleSheet, Image, ImageBackground, Dimensions, TouchableOpacity } from "react-native";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+import { useNavigation } from '@react-navigation/native';
+
+
+type RootStackParamList = {
+  [x: string]: any;
+  index: undefined;
+  join: undefined;
+  sign: undefined;
+};
+
+const App = ()=>{
+  const navigation = useNavigation<RootStackParamList>();
+
+  const handleJoinPress = () => {
+    navigation.navigate('join');
+  };
+
+  const handleSignPress = () => {
+    navigation.navigate('Sign');
+  };
+
+  return(
+    <SafeAreaProvider>
+      <SafeAreaView style={{ flex: 1 }}>
+        <ImageBackground
+          source={require("@/assets/images/background-image.png")}
+          style={styles.background}
+          resizeMode="cover"
+        >
+          <View style={styles.container}>
+            <View style={styles.companyLogo}>
+              <Image source={require("@/assets/images/Logo.png")} />
+            </View>
+
+            <View style={styles.textGroup}>
+              <Text style={styles.textLarge}>Find your favorite place here</Text>
+              <Text style={styles.textSmall}>The best prices for over 2 </Text>
+              <Text style={styles.textSmall}>million properties worldwide</Text>
+            </View>
+
+            <View style={{ position: "absolute", bottom: 0, width: "100%" }}>
+              <View style={styles.buttonGroup}>
+                <TouchableOpacity style={styles.button} onPress={handleJoinPress}>
+                  <Text style={{ ...styles.textSmall, color: "black" }}>Join here</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.transparentButton} onPress={handleSignPress}>
+                  <Text style={styles.textSmall}>Sign In</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={{ alignItems: "center", paddingVertical: 20 }}>
+                <Text style={{ color: "white" }}>Continue to home</Text>
+              </View>
+            </View>
+          </View>
+        </ImageBackground>
+      </SafeAreaView>
+    </SafeAreaProvider>
+  );
+}
+
 
 const styles = StyleSheet.create({
   container: {
@@ -61,44 +122,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Index() {
-  return (
-    <SafeAreaProvider>
-      <SafeAreaView style={{ flex: 1 }}>
-        <ImageBackground
-          source={require("@/assets/images/background-image.png")}
-          style={styles.background}
-          resizeMode="cover"
-        >
-          <View style={styles.container}>
-            <View style={styles.companyLogo}>
-              <Image source={require("@/assets/images/Logo.png")} />
-            </View>
-
-            <View style={styles.textGroup}>
-              <Text style={styles.textLarge}>Find your favorite place here</Text>
-              <Text style={styles.textSmall}>The best prices for over 2 </Text>
-              <Text style={styles.textSmall}>million properties worldwide</Text>
-            </View>
-
-            <View style={{ position: "absolute", bottom: 0, width: "100%" }}>
-              <View style={styles.buttonGroup}>
-                <TouchableOpacity style={styles.button}>
-                  <Text style={{ ...styles.textSmall, color: "black" }}>Join here</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.transparentButton}>
-                  <Text style={styles.textSmall}>Sign In</Text>
-                </TouchableOpacity>
-              </View>
-              <View style={{ alignItems: "center", paddingVertical: 20 }}>
-                <Text style={{ color: "white" }}>Continue to home</Text>
-              </View>
-            </View>
-          </View>
-        </ImageBackground>
-      </SafeAreaView>
-    </SafeAreaProvider>
-  );
-  
-}
+export default App;

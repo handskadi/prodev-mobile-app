@@ -1,62 +1,67 @@
-import {
-  Text,
-  View,
-  StyleSheet,
-  ImageBackground,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
-import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
-import { useRouter } from "expo-router";
+import { Text, View, StyleSheet, Image, ImageBackground, Dimensions, TouchableOpacity } from "react-native";
+import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
+import { useNavigation } from '@react-navigation/native';
 
-export default function Index() {
-  const router = useRouter();
+type RootStackParamList = {
+  [x: string]: any;
+  index: undefined;
+  join: undefined;
+  sign: undefined;
+};
 
-  const handleJoinHere = () => router.push("/Sign");
-  const handleSignIn = () => router.push("/Sign");
-  const handleContinue = () => router.push("/(home)");
+const App = ()=>{
+  const navigation = useNavigation<RootStackParamList>();
 
-  return (
+  const handleJoinPress = () => {
+    navigation.navigate('join');
+  };
+
+  const handleSignPress = () => {
+    navigation.navigate('Sign');
+  };
+
+  return(
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1 }}>
-        <View style={[styles.background, { backgroundColor: '#1a1a1a' }]}>
-          {/* company Logo */}
-          <View style={styles.companyLogo}>
-            <Text style={[styles.textLarge, { color: 'white' }]}>LOGO</Text>
+        <ImageBackground
+          source={require("@/assets/images/background-image.png")}
+          style={styles.background}
+          resizeMode="cover"
+        >
+          <View style={styles.container}>
+            <View style={styles.companyLogo}>
+              <Image source={require("@/assets/images/Logo.png")} />
+            </View>
+
+            <View style={styles.textGroup}>
+              <Text style={styles.textLarge}>Find your favorite place here</Text>
+              <Text style={styles.textSmall}>The best prices for over 2 </Text>
+              <Text style={styles.textSmall}>million properties worldwide</Text>
+            </View>
+
+            <View style={{ position: "absolute", bottom: 0, width: "100%" }}>
+              <View style={styles.buttonGroup}>
+                <TouchableOpacity style={styles.button} onPress={handleJoinPress}>
+                  <Text style={{ ...styles.textSmall, color: "black" }}>Join here</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.transparentButton} onPress={handleSignPress}>
+                  <Text style={styles.textSmall}>Sign In</Text>
+                </TouchableOpacity>
+              </View>
+              <TouchableOpacity onPress={() => navigation.navigate("(home)")}>
+              <View style={{ alignItems: "center", paddingVertical: 20 }}>
+                <Text style={{ color: "white" }}>Continue to home</Text>
+              </View>
+              </TouchableOpacity>
+            </View>
           </View>
-
-          <View style={styles.textGroup}>
-            <Text style={styles.textLarge}>
-              Find all your favorite places here
-            </Text>
-            <Text style={styles.textSmall}>The best price for over 2</Text>
-            <Text style={styles.textSmall}>Million properties worldwide</Text>
-          </View>
-
-          {/* Button */}
-          <View style={styles.buttonGroup}>
-            <TouchableOpacity style={styles.button} onPress={handleJoinHere}>
-              <Text style={{...styles.textSmall, color: "black"}}>Join Here</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.transparentButton} onPress={handleSignIn}>
-              <Text style={styles.textSmall}>Sign In</Text>
-            </TouchableOpacity>
-          </View>
-
-          <TouchableOpacity 
-            style={styles.navigationPrompt} 
-            onPress={handleContinue}
-          >
-            <Text style={{color:"white", fontWeight:"bold", fontSize:20}}>
-              Continue to Home 
-            </Text>
-          </TouchableOpacity>
-        </View>
+        </ImageBackground>
       </SafeAreaView>
     </SafeAreaProvider>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -115,10 +120,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 20,
     paddingHorizontal: 20,
-    paddingVertical: 20,
   },
-  navigationPrompt:{
-    alignItems: "center",
-    paddingVertical: 20,
-  }
 });
+
+export default App;
